@@ -1,11 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import GifsStack from '../src/components/GifsStack';
+import GifsStack from '../components/GifsStack';
 
 export default function HomeScreen() {
     return (
       <View style={styles.container}>
-        <GifsStack  />
+        <GifsStack limit={2} />
         <StatusBar style="auto" />
       </View>
     );
