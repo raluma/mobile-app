@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image } from 'react-native';
-import FavBtn from '../components/FavBtn'
-import Fav from '../components/Fav';
+import FavBtn from './FavBtn'
+import Fav from './Fav';
 
 export default function Gif({ uri, width, height }) {
 

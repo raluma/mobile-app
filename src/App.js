@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from "./pages/HomeScreen";
-import FavsScreen from "./pages/FavsScreen";
-import SettingsScreen from "./pages/SettingsScreen";
+import HomeScreen from "../pages/HomeScreen";
+import FavsScreen from "../pages/FavsScreen";
+import SettingsScreen from "../pages/SettingsScreen";
 import { Icon } from '@rneui/themed';
 
 const Tab = createBottomTabNavigator();

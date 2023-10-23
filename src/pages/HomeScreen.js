@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import GifsStack from '../components/GifsStack';
+import GifsStack from '../src/components/GifsStack';
 
 export default function HomeScreen() {
     return (
