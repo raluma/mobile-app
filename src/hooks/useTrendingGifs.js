@@ -9,9 +9,11 @@ export function useTrendingGifs({ limit }) {
     useEffect(() => {   
         getTredingGifs({ limit })
             .then(gifs => {
-                setGifs({ loading: false, results: gifs })
+                setTimeout(() => {
+                    setGifs({ loading: false, results: gifs })
+                }, 1000);
             }) 
-    }, [limit]);
+    }, []);
 
     return gifs;
 }
