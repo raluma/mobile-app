@@ -1,12 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { LOGIN_KEY } from "@env"
 
-const isLogin = async () => {
+export const isLogin = async () => {
     try {
-      return await AsyncStorage.getItem("key") !== undefined;
+      return await AsyncStorage.getItem("key") === LOGIN_KEY;
     } catch (e) { console.log(e); }
 };
 
-const signUp = async (username, password, password2) => {
+export const signUp = async (username, password, password2) => {
     const usernameCharsBanned = [""];
     const passwordCharsRequired = [""];
 
@@ -46,7 +47,7 @@ const signUp = async (username, password, password2) => {
     } catch (e) { console.log(e); }
 };
 
-const logIn = async () => {
+export const logIn = async () => {
     try {
         const username = await AsyncStorage.getItem("username");
         const password = await AsyncStorage.getItem("password");
