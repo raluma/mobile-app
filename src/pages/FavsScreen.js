@@ -1,20 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import Login from "../components/Login";
+import { Text } from 'react-native';
+import * as accountFunctions from "../services/accountFunctions";
 
 export default function FavsScreen() {
-    return (
-      <View style={styles.container}>
-        <Text>Favourites</Text>
-        <StatusBar style="auto" />
-      </View>
-    );
-}
+  let loged = false;
 
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-});
+  return (
+    <>
+      { loged ? 
+        <Text>hola</Text>
+        :
+        <Login />
+      } 
+    </>
+  );
+}
