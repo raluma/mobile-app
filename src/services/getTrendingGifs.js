@@ -9,8 +9,8 @@ export default async function getTredingGifs({ limit }) {
         .then(response => {
             const data = response.data
             const gifs = data.map(gif => { 
-                const { url } = gif;
-                return { url };
+                const { id, images } = gif;
+                return { id, url: images.original.url };
             });
 
             return gifs
