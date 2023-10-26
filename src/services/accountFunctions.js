@@ -4,60 +4,25 @@ import { LOGIN_KEY } from "@env"
 export const isLogin = async () => {
     try {
       return await AsyncStorage.getItem("key") === LOGIN_KEY;
-    } catch (e) { console.log(e); }
+    } catch (e) {}
 };
 
-export const signUp = async (username, password, password2) => {
-    const usernameCharsBanned = [""];
-    const passwordCharsRequired = [""];
-
-    const usernameCharBannedFound = false;
-    const nPasswordCharRequired = 0;
-
+export const logIn = async (inputUsername, inputPassword) => {
     try {
-        usernameCharsBanned.forEach(char => {
-            if (username.includes(char)) {
-                usernameCharBannedFound = true;
-                
-            }
-        });
-
-        passwordCharsRequired.forEach(char => {
-            if (password.includes(char)) {
-                nPasswordCharRequired++;
-            }
-        });
-
-        if (password === password2) {
-            if (usernameCharBannedFound) {
-                console.log("El nombre de usuario es incorrecto")
-            } else {
-                if (nPasswordCharRequired === passwordCharsRequired.length) {
-                    await AsyncStorage.setItem("username", username);
-                    await AsyncStorage.setItem("password", password);
-                } else {
-                    console.log("La contraseña es incorrecta")
-                }
-            }
-        } else {
-            console.log("Las contraseñas no coinciden");
+        const username = "admin";
+        const password = "admin2324";
+        
+        if (result = inputUsername === username && password === inputPassword) {
+            await AsyncStorage.setItem("key", LOGIN_KEY);
         }
-                    
-       
-    } catch (e) { console.log(e); }
+
+        return result;
+
+    } catch (e) {}
 };
 
-export const logIn = async () => {
+export const logOut = async () => {
     try {
-        const username = await AsyncStorage.getItem("username");
-        const password = await AsyncStorage.getItem("password");
-
-        if (username === "Admin" && password === "God") {
-            console.log("Ha iniciado sesión");
-        } else {
-            console.log("Error al iniciar sesion");
-        }
-
-
-    } catch (e) { console.log(e); }
+        await AsyncStorage.setItem("key", "");
+    } catch (e) {}
 };
