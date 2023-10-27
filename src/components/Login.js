@@ -7,13 +7,32 @@ import { logIn } from '../services/accountFunctions'
 export default function Login({ setLoged }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [hidden, setHidden] = useState(true);
+  const [error, setError] = useState(false);
 
   const onPress = () => {
-    setLoged({loading: false, result: logIn(username, password)});
+    logIn(username, password).then(result => {
+      setLoged({loading: false, result: result});
+      setError(!result);
+    });
+  }
+  const onEye = () => {
+    setHidden(!hidden);
   }
 
   return (
     <View style={styles.container}>
+      { error === true ? 
+        <Button 
+          mode="elevated" 
+          style={styles.errorButton}
+        >
+          La contraseña o usuario son incorrectos 
+        </Button>
+        :
+        <></>
+      }
+  
       <TextInput
         label="Username"
         value={username}
@@ -23,8 +42,8 @@ export default function Login({ setLoged }) {
 
       <TextInput
         label="Password"
-        secureTextEntry
-        right={<TextInput.Icon icon="eye" />}
+        secureTextEntry = {hidden}
+        right={<TextInput.Icon icon="eye" onPress={onEye} />}
         value={password}
         onChangeText={password => setPassword(password)}
         style={styles.textInput}
@@ -57,5 +76,8 @@ const styles = StyleSheet.create({
     button: {
       width: 160,
       borderRadius: 2
+    },
+    errorButton: {
+
     }
 });
